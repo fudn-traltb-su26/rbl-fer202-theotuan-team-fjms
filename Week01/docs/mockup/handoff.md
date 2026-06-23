@@ -1,10 +1,10 @@
 # TÀI LIỆU BÀN GIAO MOCKUP SANG CODE (HANDOFF DOCUMENT) - TUẦN 1
 
-Tài liệu này ánh xạ các phân vùng giao diện trên bản vẽ thiết kế Mockup của **Thành viên C** (màn hình Chi tiết dự án và Dự án đã lưu) thành các React Component dự kiến sẽ lập trình, cùng tuần triển khai tương ứng.
+Tài liệu này ánh xạ các phân vùng giao diện trên bản vẽ thiết kế Mockup thành các React Component dự kiến sẽ lập trình, cùng tuần triển khai tương ứng.
 
 ---
 
-## 1. Màn hình Chi tiết dự án (Project Details Page)
+## 1. Màn hình Chi tiết dự án (Project Details Page) - Thành viên C
 
 Đường dẫn thiết kế mockup: `Week01/docs/mockup/project_details.png`
 
@@ -20,7 +20,7 @@ Tài liệu này ánh xạ các phân vùng giao diện trên bản vẽ thiết
 
 ---
 
-## 2. Màn hình Giỏ hàng / Dự án đã lưu (Saved Projects Page)
+## 2. Màn hình Giỏ hàng / Dự án đã lưu (Saved Projects Page) - Thành viên C
 
 Đường dẫn thiết kế mockup: `Week01/docs/mockup/saved_projects.png`
 
@@ -33,3 +33,21 @@ Tài liệu này ánh xạ các phân vùng giao diện trên bản vẽ thiết
 | **Nút "Xóa" (Thùng rác)** | `IconButton` (Danger) | `src/components/common/IconButton.jsx` | **Tuần 4 & 6** | Nút màu đỏ (Soft Crimson). Kích hoạt hàm xóa dự án khỏi danh sách lưu (`handleRemoveSaved`). |
 | **Trạng thái danh sách trống**| `EmptySavedProjects` | `src/components/EmptySavedProjects.jsx` | **Tuần 6** | Hiển thị hình vẽ minh họa, dòng chữ thông báo và nút "Khám phá dự án" khi danh sách trống. |
 | **Thanh menu bên cạnh** | `SidebarNavigation` | `src/components/SidebarNavigation.jsx` | **Tuần 5 & 6** | Menu điều hướng dạng cột dọc chứa badge đếm số lượng dự án đã lưu. |
+
+---
+
+## 3. Các thành phần chung (Thành viên A & B)
+
+| Vùng trên Mockup (UI Section) | Tên Component sẽ code (`src/components/`) | Người phụ trách | Tuần thực hiện |
+|-------------------------------|-------------------------------------------|----------------|----------------|
+| Thanh điều hướng (Navbar) | `Header.jsx` | Thành viên A | Tuần 2 |
+| Khu vực giới thiệu (Hero Banner) | `Banner.jsx` | Thành viên B | Tuần 2 |
+| Danh sách danh mục (Tags/Chips) | `CategoryList.jsx` | Thành viên C | Tuần 2 |
+| Thẻ dự án độc lập (Single Card) | `ProjectCard.jsx` | Thành viên B | Tuần 2 |
+| Lưới hiển thị nhiều thẻ dự án | `ProjectGrid.jsx` | Thành viên C | Tuần 2 |
+| Thanh tìm kiếm | `SearchBar.jsx` | Thành viên A | Tuần 4 |
+| Chân trang | `Footer.jsx` | Thành viên A | Tuần 2 |
+
+**Lưu ý khi handoff:**
+- Mọi Component phải tuân thủ đúng màu sắc và kích thước từ `style-guide.md`.
+- Các dữ liệu hiển thị (tiêu đề, ngân sách, danh mục) phải khớp với cấu trúc object trong file `db.json`.

@@ -1,10 +1,10 @@
-# NHẬT KÝ PROMPT THIẾT KẾ (PROMPTS LOG) - TUẦN 1 (THÀNH VIÊN C)
+# NHẬT KÝ PROMPT THIẾT KẾ (PROMPTS LOG) - TUẦN 1 
 
-Tài liệu này ghi lại toàn bộ các câu lệnh (prompts) được sử dụng để thiết kế mockup và giao diện các màn hình của **Thành viên C** phụ trách thông qua các công cụ AI Design (Figma Make / Galileo AI / v0).
+Tài liệu này ghi lại toàn bộ các câu lệnh (prompts) được sử dụng để thiết kế mockup và giao diện các màn hình thông qua các công cụ AI Design (Figma Make / Galileo AI / v0 / Google Stitch).
 
 ---
 
-## 1. Màn hình Chi tiết dự án (Project Details Page)
+## 1. Màn hình Chi tiết dự án (Project Details Page) - Thành viên C
 
 ### Prompt 1: Tạo cấu trúc bố cục cơ bản (Wireframe/Layout)
 > **Mục tiêu**: Tạo khung giao diện chi tiết dự án có tổ chức thông tin khoa học, phân chia rõ rệt khu vực thông tin chính và thông tin nhanh.
@@ -35,7 +35,7 @@ Tài liệu này ghi lại toàn bộ các câu lệnh (prompts) được sử d
 
 ---
 
-## 2. Màn hình Giỏ hàng / Dự án đã lưu (Saved Projects Page)
+## 2. Màn hình Giỏ hàng / Dự án đã lưu (Saved Projects Page) - Thành viên C
 
 ### Prompt 1: Thiết kế giao diện danh sách dự án đã lưu
 > **Mục tiêu**: Tạo một trang quản lý các dự án mà freelancer quan tâm hoặc đã lưu để ứng tuyển sau, sử dụng cấu trúc bảng chuyên nghiệp.
@@ -66,4 +66,24 @@ Tài liệu này ghi lại toàn bộ các câu lệnh (prompts) được sử d
   - A description text: "Explore open opportunities and save your favorite projects to apply later." in medium gray color.
   - A prominent green button "Browse Projects" (background color #059669) that links to the job listings page.
   Keep the sidebar navigation the same as the previous screen, but the badge number next to "Saved Projects" should be "0".
+  ```
+
+---
+
+## 3. Màn hình Trang chủ và Danh sách dự án - Thành viên B
+
+### Prompt 1: Thiết kế Trang chủ (Home Page)
+> **Mục tiêu**: Thiết kế màn hình Trang chủ hấp dẫn, chuyên nghiệp cho sàn giao dịch Freelancer.
+* **Công cụ:** Google Stitch / Midjourney / Figma AI
+* **Prompt**:
+  ```text
+  Design a modern, professional home page for a Freelancer Job Matching System (FJMS). Please generate a desktop web layout (1440px wide). The color scheme should use Emerald Green (#0F766E) as the primary color with a light gray background (#F8FAFC). The UI must include a horizontal navigation bar with a logo, a full-width hero banner with a bold headline 'Nâng tầm doanh nghiệp của bạn với Nhân tài hàng đầu toàn cầu' and two call-to-action buttons. Below the hero banner, display 5 job category tags (e.g., Web Development, UI/UX Design). Finally, include a 'Featured Projects' section containing a grid of modern cards with soft shadows, each showing a project title, budget, category badge, and employer name. Use Inter font, rounded corners, and a clean layout.
+  ```
+
+### Prompt 2: Thiết kế Danh sách dự án (Project List)
+> **Mục tiêu**: Thiết kế trang tìm kiếm và lọc dự án trực quan, dễ sử dụng.
+* **Công cụ:** Google Stitch / Midjourney / Figma AI
+* **Prompt**:
+  ```text
+  Design a project listing page for a Freelancer marketplace. Please generate a desktop web layout (1440px wide). Use the same Emerald Green and light gray color palette. The layout should have a left sidebar for filtering options (by Category, Budget, Skills) and a wide main content area displaying a grid or wide list of project cards. Top of the main area should have a search bar and a sorting dropdown. Each project card must display a title, description, skills required, budget, duration, and a 'Save Project' icon. Include pagination at the bottom. The style should be minimalistic, corporate, with soft drop shadows and rounded UI elements.
   ```
