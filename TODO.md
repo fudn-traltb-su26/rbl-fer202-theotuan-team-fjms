@@ -118,22 +118,22 @@ Hiểu JSX là gì, viết functional component, dùng `map()` để render danh
 ### ✅ Checklist công việc
 
 **Nghiên cứu trước [ALL]**
-- [ ] Đọc tài liệu về JSX compilation, phân biệt class/className, for/htmlFor, event handling.
+- [x] Đọc tài liệu về JSX compilation, phân biệt class/className, for/htmlFor, event handling.
 
 **Header.jsx [A]**
-- [ ] Navbar với logo "💼 FJMS Marketplace"
-- [ ] Navigation links: Trang chủ | Tìm việc | Dự án đã lưu | Dashboard
-- [ ] Icon dự án đã lưu với số lượng (hardcode "0" — tuần 4 sẽ nâng cấp)
-- [ ] Style bằng inline CSS (chưa dùng Bootstrap/Tailwind)
+- [x] Navbar với logo "💼 FJMS Marketplace"
+- [x] Navigation links: Trang chủ | Tìm việc | Dự án đã lưu | Dashboard
+- [x] Icon dự án đã lưu với số lượng (hardcode "0" — tuần 4 sẽ nâng cấp)
+- [x] Style bằng inline CSS (chưa dùng Bootstrap/Tailwind)
 
 **Banner.jsx & ProjectCard.jsx [B]**
-- [ ] Banner: Hero section giới thiệu FJMS với tiêu đề, mô tả và nút hành động.
-- [ ] ProjectCard: Hiển thị tiêu đề dự án, mô tả ngắn, ngân sách, danh mục. Dữ liệu tạm thời hardcode trực tiếp.
+- [x] Banner: Hero section giới thiệu FJMS với tiêu đề, mô tả và nút hành động.
+- [x] ProjectCard: Hiển thị tiêu đề dự án, mô tả ngắn, ngân sách, danh mục. Dữ liệu tạm thời hardcode trực tiếp.
 
 **ProjectGrid.jsx & CategoryList.jsx & App.jsx [C]**
-- [ ] Khai báo mảng `PROJECTS_DATA` gồm 4 dự án mẫu, map ra danh sách card.
-- [ ] CategoryList: Render 5 danh mục ngành nghề, dùng `&&` hoặc ternary operator để xử lý dữ liệu trống.
-- [ ] Tích hợp cả 5 components vào App.jsx, kiểm tra không có lỗi console.
+- [x] Khai báo mảng `PROJECTS_DATA` gồm 4 dự án mẫu, map ra danh sách card.
+- [x] CategoryList: Render 5 danh mục ngành nghề, dùng `&&` hoặc ternary operator để xử lý dữ liệu trống.
+- [x] Tích hợp cả 5 components vào App.jsx, kiểm tra không có lỗi console.
 
 ### 📦 ĐẦU RA BẮT BUỘC — Tuần 2
 
@@ -519,8 +519,8 @@ Quản lý state tập trung với Redux Toolkit. Tối ưu hiệu năng bằng 
 
 | Tuần | Chủ đề | File/Component chính cần có | Trạng thái |
 |------|--------|------------------------------|------------|
-| 1 | Setup & Design | `db.json`, `README.md`, mockup 4 màn hình | ☐ |
-| 2 | Components & JSX | `Header`, `Banner`, `ProjectCard`, `ProjectGrid`, `CategoryList`, `Footer` | ☐ |
+| 1 | Setup & Design | `db.json`, `README.md`, mockup 4 màn hình | ☑ |
+| 2 | Components & JSX | `Header`, `Banner`, `ProjectCard`, `ProjectGrid`, `CategoryList`, `Footer` | ☑ |
 | 3 | Props | `ProjectCard` (props), `SectionWrapper` (children), `ProjectGrid` (props) | ☐ |
 | 4 | Events & State | `SearchBar` (controlled), `App` (saved projects state, filter) | ☐ |
 | 5 | Bootstrap / Responsive | Tất cả components responsive 3 breakpoints | ☐ |
