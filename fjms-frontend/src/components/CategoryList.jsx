@@ -1,33 +1,12 @@
 import React from 'react';
 
-const CATEGORIES_DATA = [
-  { id: 1, name: "Web Development", icon: "💻", count: 3 },
-  { id: 2, name: "Mobile Development", icon: "📱", count: 2 },
-  { id: 3, name: "UI/UX Design", icon: "🎨", count: 2 },
-  { id: 4, name: "Graphic Design", icon: "📐", count: 1 },
-  { id: 5, name: "Content Writing", icon: "✍️", count: 1 }
-];
-
-function CategoryList({ categories = CATEGORIES_DATA }) {
-  const sectionStyle = {
-    padding: '2rem',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    fontFamily: "'Inter', sans-serif"
-  };
-
-  const titleStyle = {
-    fontSize: '1.5rem',
-    fontWeight: '700',
-    color: '#1F2937',
-    marginBottom: '1.5rem'
-  };
-
+function CategoryList({ categories }) {
   const listStyle = {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '1rem',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    fontFamily: "'Inter', sans-serif"
   };
 
   const cardStyle = {
@@ -63,10 +42,8 @@ function CategoryList({ categories = CATEGORIES_DATA }) {
   };
 
   return (
-    <div style={sectionStyle}>
-      <h2 style={titleStyle}>Danh mục công việc</h2>
-      
-      {/* Conditional rendering using ternary operator as requested in Week 2 checklist */}
+    <div>
+      {/* Conditional rendering using ternary operator */}
       {categories && categories.length > 0 ? (
         <div style={listStyle}>
           {categories.map((cat) => (
@@ -78,11 +55,12 @@ function CategoryList({ categories = CATEGORIES_DATA }) {
           ))}
         </div>
       ) : (
-        <p style={{ color: '#6B7280', fontStyle: 'italic' }}>Không có danh mục nào khả dụng.</p>
+        <p style={{ color: '#6B7280', fontStyle: 'italic', fontFamily: "'Inter', sans-serif" }}>
+          Không có danh mục nào khả dụng.
+        </p>
       )}
     </div>
   );
 }
 
 export default CategoryList;
-export { CATEGORIES_DATA };

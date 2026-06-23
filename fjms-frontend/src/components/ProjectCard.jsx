@@ -1,17 +1,6 @@
 import React from 'react';
 
-function ProjectCard({ project }) {
-  // Default hardcoded project for Week 2 Member B compliance
-  const defaultProject = {
-    title: "E-Commerce Web App",
-    description: "Build a responsive React e-commerce frontend with TailwindCSS.",
-    budget: 15000000,
-    category: "Web Development",
-    duration: "30 days"
-  };
-
-  const data = project || defaultProject;
-
+function ProjectCard({ project, onSaveProject }) {
   const cardStyle = {
     backgroundColor: '#FFFFFF',
     border: '1px solid #E5E7EB',
@@ -72,14 +61,14 @@ function ProjectCard({ project }) {
 
   const btnStyle = {
     padding: '0.4rem 0.8rem',
-    backgroundColor: '#FFFFFF',
-    border: '1px solid #D1D5DB',
+    backgroundColor: '#059669',
+    border: '1px solid #059669',
     borderRadius: '6px',
-    color: '#374151',
+    color: '#FFFFFF',
     fontSize: '0.85rem',
     fontWeight: '500',
     cursor: 'pointer',
-    transition: 'background-color 0.2s'
+    transition: 'all 0.2s'
   };
 
   // Format budget in VND
@@ -90,17 +79,22 @@ function ProjectCard({ project }) {
   return (
     <div style={cardStyle}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        <span style={categoryBadgeStyle}>{data.category}</span>
-        <h3 style={titleStyle}>{data.title}</h3>
-        <p style={descStyle}>{data.description}</p>
+        <span style={categoryBadgeStyle}>{project.category}</span>
+        <h3 style={titleStyle}>{project.title}</h3>
+        <p style={descStyle}>{project.description}</p>
       </div>
 
       <div style={footerStyle}>
         <div>
           <span style={{ fontSize: '0.75rem', color: '#9CA3AF', display: 'block' }}>Ngân sách</span>
-          <span style={budgetStyle}>{formatVND(data.budget)}</span>
+          <span style={budgetStyle}>{formatVND(project.budget)}</span>
         </div>
-        <button style={btnStyle}>Lưu việc</button>
+        <button 
+          style={btnStyle}
+          onClick={() => onSaveProject(project)}
+        >
+          Lưu dự án
+        </button>
       </div>
     </div>
   );

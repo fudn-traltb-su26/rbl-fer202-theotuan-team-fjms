@@ -166,19 +166,19 @@ Truyền dữ liệu từ cha xuống con qua Props. Hiểu one-way data flow. T
 ### ✅ Checklist công việc
 
 **ProjectCard.jsx [A]**
-- [ ] Nhận `{ project, onSaveProject }` qua props, xóa dữ liệu hardcode.
-- [ ] Hiển thị thông tin động từ object `project` (tiêu đề, ngân sách định dạng VND/USD).
-- [ ] Nút "Lưu dự án": `onClick={() => onSaveProject(project)}`.
+- [x] Nhận `{ project, onSaveProject }` qua props, xóa dữ liệu hardcode.
+- [x] Hiển thị thông tin động từ object `project` (tiêu đề, ngân sách định dạng VND/USD).
+- [x] Nút "Lưu dự án": `onClick={() => onSaveProject(project)}`.
 
 **ProjectGrid.jsx & CategoryList.jsx [B]**
-- [ ] Nhận props `projects` và `onSaveProject`, map qua list, thêm `key={project.id}`.
-- [ ] CategoryList nhận mảng `categories` và hiển thị danh sách tương ứng.
+- [x] Nhận props `projects` và `onSaveProject`, map qua list, thêm `key={project.id}`.
+- [x] CategoryList nhận mảng `categories` và hiển thị danh sách tương ứng.
 
 **SectionWrapper.jsx & App.jsx & Data Flow [C]**
-- [ ] Tạo `SectionWrapper` nhận `title`, `subtitle`, và `children` (`props.children`).
-- [ ] Dùng `SectionWrapper` bọc các phần lớn ở App.jsx.
-- [ ] Khai báo dữ liệu mẫu tại App.jsx và truyền xuống.
-- [ ] Sơ đồ luồng dữ liệu (Data Flow Diagram) lưu vào `docs/week03-dataflow.png`.
+- [x] Tạo `SectionWrapper` nhận `title`, `subtitle`, và `children` (`props.children`).
+- [x] Dùng `SectionWrapper` bọc các phần lớn ở App.jsx.
+- [x] Khai báo dữ liệu mẫu tại App.jsx và truyền xuống.
+- [x] Sơ đồ luồng dữ liệu (Data Flow Diagram) lưu vào `docs/week03-dataflow.png`.
 
 ### 📦 ĐẦU RA BẮT BUỘC — Tuần 3
 
@@ -521,7 +521,7 @@ Quản lý state tập trung với Redux Toolkit. Tối ưu hiệu năng bằng 
 |------|--------|------------------------------|------------|
 | 1 | Setup & Design | `db.json`, `README.md`, mockup 4 màn hình | ☑ |
 | 2 | Components & JSX | `Header`, `Banner`, `ProjectCard`, `ProjectGrid`, `CategoryList`, `Footer` | ☑ |
-| 3 | Props | `ProjectCard` (props), `SectionWrapper` (children), `ProjectGrid` (props) | ☐ |
+| 3 | Props | `ProjectCard` (props), `SectionWrapper` (children), `ProjectGrid` (props) | ☑ |
 | 4 | Events & State | `SearchBar` (controlled), `App` (saved projects state, filter) | ☐ |
 | 5 | Bootstrap / Responsive | Tất cả components responsive 3 breakpoints | ☐ |
 | 6 | Routing | `App` (BrowserRouter), `ProjectDetailPage` (useParams), `ProtectedRoute` | ☐ |
