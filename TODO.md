@@ -57,8 +57,8 @@ Thiết lập nền tảng kỹ thuật và tư duy thiết kế trước khi co
 - [x] Thống nhất style chung của nhóm: màu chủ đạo (Emerald green cho FJMS), font, tone (chuyên nghiệp, hiện đại) — ghi vào `docs/mockup/style-guide.md`
 
 *Bước 2 — Tạo mockup với Google Stitch/Figma [B]*
-- [ ] Viết prompt mô tả Trang chủ & Danh sách dự án dựa trên style guide của nhóm.
-- [ ] Lưu prompts đã dùng vào `docs/mockup/prompts.md` làm minh chứng làm việc với AI.
+- [x] Viết prompt mô tả Trang chủ & Danh sách dự án dựa trên style guide của nhóm.
+- [x] Lưu prompts đã dùng vào `docs/mockup/prompts.md` làm minh chứng làm việc với AI.
 
 *Bước 3 — Tạo prototype tương tác với Figma Make [C]*
 - [x] Prompt mô tả màn Chi tiết dự án + Giỏ hàng/Ví/Dự án đã lưu.
@@ -72,9 +72,9 @@ Thiết lập nền tảng kỹ thuật và tư duy thiết kế trước khi co
 - [x] Ghi vào `docs/mockup/handoff.md` bảng map: *Vùng trên mockup → Component sẽ code → Tuần thực hiện*
 
 **Dữ liệu [B]**
-- [ ] Tạo `db.json` tại root project cho json-server (hoặc thiết lập script database)
-- [ ] `projects`: ít nhất 8 dự án với các trường: id, title, description, budget, category, categoryId, status, duration, requiredSkills, featured
-- [ ] `categories`: 5 danh mục công việc (Web Dev, Mobile Dev, UI/UX Design, Graphic Design, Content Writing)
+- [x] Tạo `db.json` tại root project cho json-server (hoặc thiết lập script database)
+- [x] `projects`: ít nhất 8 dự án với các trường: id, title, description, budget, category, categoryId, status, duration, requiredSkills, featured
+- [x] `categories`: 5 danh mục công việc (Web Dev, Mobile Dev, UI/UX Design, Graphic Design, Content Writing)
 
 **Component Tree & Tài liệu [A]**
 - [x] Vẽ sơ đồ Component Tree (dùng draw.io hoặc Figma)
