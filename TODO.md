@@ -48,28 +48,28 @@ Thiết lập nền tảng kỹ thuật và tư duy thiết kế trước khi co
 > Nguyên tắc: AI tạo bản nháp nhanh, con người quyết định — mọi output phải được đối chiếu với requirements trước khi dùng.
 
 *Bước 1 — Chuẩn bị requirements trước khi prompt [B + C]*
-- [ ] Liệt kê 4 màn hình cần thiết kế và components của từng màn hình (lấy từ Component Tree nháp của A):
+- [x] Liệt kê 4 màn hình cần thiết kế và components của từng màn hình (lấy từ Component Tree nháp của A):
   - **Trang chủ**: Header (logo, nav, user profile, cart/saved icon) + Hero Banner + CategoryList (5 danh mục ngành nghề) + ProjectGrid (8 dự án mới nhất) + Footer
   - **Danh sách dự án**: SearchBar + Filter danh mục/ngân sách + ProjectGrid + Pagination
   - **Chi tiết dự án**: Tiêu đề dự án, mô tả chi tiết, ngân sách (budget), kỹ năng yêu cầu, thông tin nhà tuyển dụng, nút "Gửi báo giá/Proposal"
   - **Giỏ hàng/Dự án đã lưu**: Bảng danh sách dự án quan tâm (ảnh/logo, tên dự án, ngân sách, hành động xóa) + nút Quản lý ứng tuyển
-- [ ] Đối chiếu với cấu trúc `db.json` / DB Schema của B: mỗi field hiển thị trên UI phải tồn tại trong data (vd: mockup có ngân sách thì project phải có `budget`)
-- [ ] Thống nhất style chung của nhóm: màu chủ đạo (Emerald green cho FJMS), font, tone (chuyên nghiệp, hiện đại) — ghi vào `docs/mockup/style-guide.md`
+- [x] Đối chiếu với cấu trúc `db.json` / DB Schema của B: mỗi field hiển thị trên UI phải tồn tại trong data (vd: mockup có ngân sách thì project phải có `budget`)
+- [x] Thống nhất style chung của nhóm: màu chủ đạo (Emerald green cho FJMS), font, tone (chuyên nghiệp, hiện đại) — ghi vào `docs/mockup/style-guide.md`
 
 *Bước 2 — Tạo mockup với Google Stitch/Figma [B]*
 - [ ] Viết prompt mô tả Trang chủ & Danh sách dự án dựa trên style guide của nhóm.
 - [ ] Lưu prompts đã dùng vào `docs/mockup/prompts.md` làm minh chứng làm việc với AI.
 
 *Bước 3 — Tạo prototype tương tác với Figma Make [C]*
-- [ ] Prompt mô tả màn Chi tiết dự án + Giỏ hàng/Ví/Dự án đã lưu.
-- [ ] Click thử prototype: luồng *Danh sách → Chi tiết → Lưu dự án → Xem danh sách đã lưu* hoạt động tốt.
+- [x] Prompt mô tả màn Chi tiết dự án + Giỏ hàng/Ví/Dự án đã lưu.
+- [x] Click thử prototype: luồng *Danh sách → Chi tiết → Lưu dự án → Xem danh sách đã lưu* hoạt động tốt.
 
 *Bước 4 — Đánh giá kết quả đầu ra [B + C + REVIEW: A]*
-- [ ] Đánh giá giao diện theo checklist độ tương thích dữ liệu, tính nhất quán style, và tính responsive.
+- [x] Đánh giá giao diện theo checklist độ tương thích dữ liệu, tính nhất quán style, và tính responsive.
 
 *Bước 5 — Đầu ra & hướng xử lý tiếp theo (handoff sang code) [B + C + A]*
-- [ ] Export ảnh PNG 4 màn hình + link project Stitch/Figma → lưu `docs/mockup/`
-- [ ] Ghi vào `docs/mockup/handoff.md` bảng map: *Vùng trên mockup → Component sẽ code → Tuần thực hiện*
+- [x] Export ảnh PNG 4 màn hình + link project Stitch/Figma → lưu `docs/mockup/`
+- [x] Ghi vào `docs/mockup/handoff.md` bảng map: *Vùng trên mockup → Component sẽ code → Tuần thực hiện*
 
 **Dữ liệu [B]**
 - [ ] Tạo `db.json` tại root project cho json-server (hoặc thiết lập script database)
