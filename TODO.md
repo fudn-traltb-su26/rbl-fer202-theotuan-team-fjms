@@ -31,16 +31,16 @@ Thiết lập nền tảng kỹ thuật và tư duy thiết kế trước khi co
 ### ✅ Checklist công việc
 
 **Môi trường & Cài đặt**
-- [ ] Cài Node.js 18+ — kiểm tra: `node -v` phải ra `v18.x.x` trở lên
-- [ ] Cài VS Code + extensions: ES7+ React Snippets, Prettier, ESLint, GitLens
-- [ ] Cài React DevTools extension cho Chrome
+- [x] Cài Node.js 18+ — kiểm tra: `node -v` phải ra `v18.x.x` trở lên
+- [x] Cài VS Code + extensions: ES7+ React Snippets, Prettier, ESLint, GitLens
+- [x] Cài React DevTools extension cho Chrome
 
 **Khởi tạo project [A]**
-- [ ] Chạy: `npm create vite@latest fjms-frontend -- --template react` (hoặc khởi tạo trong cấu trúc thư mục của nhóm)
-- [ ] Vào thư mục và chạy: `npm install`
-- [ ] Cài thêm: `npm install react-bootstrap bootstrap react-router-dom axios lucide-react`
-- [ ] Tạo cấu trúc thư mục chuẩn: `src/components`, `src/pages`, `src/context`, `src/hooks`, `src/services`, `src/assets`
-- [ ] Kiểm tra: `npm run dev` → mở `http://localhost:5173` thấy trang Vite mặc định
+- [x] Chạy: `npm create vite@latest fjms-frontend -- --template react` (hoặc khởi tạo trong cấu trúc thư mục của nhóm)
+- [x] Vào thư mục và chạy: `npm install`
+- [x] Cài thêm: `npm install react-bootstrap bootstrap react-router-dom axios lucide-react`
+- [x] Tạo cấu trúc thư mục chuẩn: `src/components`, `src/pages`, `src/context`, `src/hooks`, `src/services`, `src/assets`
+- [x] Kiểm tra: `npm run dev` → mở `http://localhost:5173` thấy trang Vite mặc định
 
 **Thiết kế mockup với AI Design Tools [B, C]**
 
@@ -77,11 +77,11 @@ Thiết lập nền tảng kỹ thuật và tư duy thiết kế trước khi co
 - [ ] `categories`: 5 danh mục công việc (Web Dev, Mobile Dev, UI/UX Design, Graphic Design, Content Writing)
 
 **Component Tree & Tài liệu [A]**
-- [ ] Vẽ sơ đồ Component Tree (dùng draw.io hoặc Figma)
-- [ ] Viết `README.md` hướng dẫn cài đặt và chạy ứng dụng
+- [x] Vẽ sơ đồ Component Tree (dùng draw.io hoặc Figma)
+- [x] Viết `README.md` hướng dẫn cài đặt và chạy ứng dụng
 
 **GitHub [A + ALL]**
-- [ ] Thiết lập repo, mời các thành viên làm Collaborator, thống nhất quy trình Git Flow.
+- [x] Thiết lập repo, mời các thành viên làm Collaborator, thống nhất quy trình Git Flow.
 
 ### 📦 ĐẦU RA BẮT BUỘC — Tuần 1
 
