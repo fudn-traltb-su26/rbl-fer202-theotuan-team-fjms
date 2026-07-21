@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --fjms-primary: #059669;
+  --fjms-primary-hover: #047857;
+  --fjms-primary-light: #ecfdf5;
+  --fjms-accent: #10b981;
+  --fjms-dark: #0f172a;
+  --fjms-card-bg: #ffffff;
+  --fjms-border: #e2e8f0;
+  --fjms-text-main: #1e293b;
+  --fjms-text-muted: #64748b;
+  --fjms-bg-light: #f8fafc;
+  --fjms-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --fjms-shadow-hover: 0 20px 30px -10px rgba(5, 150, 105, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--fjms-bg-light);
+  color: var(--fjms-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Custom UI Utilities */
+.fjms-badge-category {
+  background-color: rgba(5, 150, 105, 0.1);
+  color: var(--fjms-primary);
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+.fjms-card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--fjms-border);
+}
+
+.fjms-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--fjms-shadow-hover);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.fjms-gradient-banner {
+  background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #059669 100%);
+}
+
+.fjms-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.fjms-btn-primary {
+  background-color: var(--fjms-primary);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.fjms-btn-primary:hover {
+  background-color: var(--fjms-primary-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fjms-banner-title {
+    font-size: 1.85rem !important;
+  }
+}
