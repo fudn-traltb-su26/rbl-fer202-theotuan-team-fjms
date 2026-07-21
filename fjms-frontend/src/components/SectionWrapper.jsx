@@ -1,48 +1,39 @@
 import React from 'react';
+import { Container, Badge } from 'react-bootstrap';
 
-function SectionWrapper({ title, subtitle, children }) {
-  const sectionStyle = {
-    padding: '3rem 2rem',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    fontFamily: "'Inter', sans-serif",
-    borderBottom: '1px solid #F3F4F6'
-  };
-
-  const headerStyle = {
-    marginBottom: '2rem',
-    textAlign: 'left'
-  };
-
-  const titleStyle = {
-    fontSize: '1.75rem',
-    fontWeight: '700',
-    color: '#1F2937',
-    margin: '0 0 0.5rem 0'
-  };
-
-  const subtitleStyle = {
-    fontSize: '1rem',
-    color: '#6B7280',
-    margin: 0
-  };
-
-  const contentStyle = {
-    width: '100%'
-  };
+function SectionWrapper({ id, title, subtitle, badge, children, bg = "light" }) {
+  const isWhite = bg === "white";
 
   return (
-    <section style={sectionStyle}>
-      {/* Render header only if title is provided */}
-      {title && (
-        <div style={headerStyle}>
-          <h2 style={titleStyle}>{title}</h2>
-          {subtitle && <p style={subtitleStyle}>{subtitle}</p>}
+    <section 
+      id={id} 
+      className={`py-5 ${isWhite ? 'bg-white border-top border-bottom' : 'bg-transparent'}`}
+    >
+      <Container>
+        {/* Section Header */}
+        {title && (
+          <div className="mb-4">
+            {badge && (
+              <Badge bg="success" className="px-3 py-2 rounded-pill fw-semibold mb-2" style={{ backgroundColor: '#059669' }}>
+                {badge}
+              </Badge>
+            )}
+            <h2 className="fw-bold text-dark fs-3 mb-1" style={{ letterSpacing: '-0.01em' }}>
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="text-muted fs-6 mb-0">
+                {subtitle}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Section Children Content */}
+        <div className="w-100">
+          {children}
         </div>
-      )}
-      <div style={contentStyle}>
-        {children}
-      </div>
+      </Container>
     </section>
   );
 }

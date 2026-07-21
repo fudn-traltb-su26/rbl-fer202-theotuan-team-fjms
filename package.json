@@ -1,0 +1,11 @@
+{
+  "name": "rbl-fer202-theotuan-team-fjms",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix fjms-frontend run dev",
+    "dev": "npm --prefix fjms-frontend run dev",
+    "build": "npm --prefix fjms-frontend run build",
+    "preview": "npm --prefix fjms-frontend run preview"
+  }
+}

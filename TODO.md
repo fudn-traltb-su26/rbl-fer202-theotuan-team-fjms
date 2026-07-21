@@ -211,20 +211,20 @@ Sử dụng `useState` để quản lý state nội bộ. Hiểu controlled comp
 ### ✅ Checklist công việc
 
 **SearchBar.jsx & Header.jsx [A]**
-- [ ] Tạo state `keyword`. Bind input `value={keyword}` và update qua `onChange`.
-- [ ] Validation khi submit: độ dài từ khóa < 2 ký tự thì hiển thị thông báo lỗi màu đỏ.
-- [ ] Nút Clear (×) để xóa từ khóa nhanh.
-- [ ] Cập nhật Header.jsx nhận `savedCount` hiển thị badge số lượng dự án đã lưu.
+- [x] Tạo state `keyword`. Bind input `value={keyword}` và update qua `onChange`.
+- [x] Validation khi submit: độ dài từ khóa < 2 ký tự thì hiển thị thông báo lỗi màu đỏ.
+- [x] Nút Clear (×) để xóa từ khóa nhanh.
+- [x] Cập nhật Header.jsx nhận `savedCount` hiển thị badge số lượng dự án đã lưu.
 
 **State dự án đã lưu [B]**
-- [ ] Khai báo `const [savedProjects, setSavedProjects] = useState([])` tại App.jsx.
-- [ ] Hàm `handleSaveProject(project)`: Kiểm tra nếu chưa lưu thì thêm vào, nếu lưu rồi thì báo lỗi hoặc xóa (áp dụng immutable update: `[...prev, project]`).
-- [ ] Viết báo cáo giải thích chi tiết cơ chế immutable update trong React state.
+- [x] Khai báo `const [savedProjects, setSavedProjects] = useState([])` tại App.jsx.
+- [x] Hàm `handleSaveProject(project)`: Kiểm tra nếu chưa lưu thì thêm vào, nếu lưu rồi thì báo lỗi hoặc xóa (áp dụng immutable update: `[...prev, project]`).
+- [x] Viết báo cáo giải thích chi tiết cơ chế immutable update trong React state.
 
 **Filter danh mục & Tích hợp [C]**
-- [ ] Khai báo state `activeCategory` tại App.jsx.
-- [ ] Tính toán derived state `filteredProjects` dựa trên từ khóa tìm kiếm và danh mục đang chọn.
-- [ ] Tích hợp các state và handler lên App.jsx và phân phối qua props xuống các component con.
+- [x] Khai báo state `activeCategory` tại App.jsx.
+- [x] Tính toán derived state `filteredProjects` dựa trên từ khóa tìm kiếm và danh mục đang chọn.
+- [x] Tích hợp các state và handler lên App.jsx và phân phối qua props xuống các component con.
 
 ### 📦 ĐẦU RA BẮT BUỘC — Tuần 4
 
@@ -258,17 +258,18 @@ Sử dụng `useState` để quản lý state nội bộ. Hiểu controlled comp
 ### ✅ Checklist công việc
 
 **Responsive Header [A]**
-- [ ] Sử dụng các component responsive (Hamburger menu tự động ẩn hiện trên mobile).
-- [ ] Hiển thị badge số lượng dự án đã lưu nổi bật trên icon.
+- [x] Sử dụng các component responsive (Hamburger menu tự động ẩn hiện trên mobile).
+- [x] Hiển thị badge số lượng dự án đã lưu nổi bật trên icon.
 
 **Responsive Banner & CategoryList [B]**
-- [ ] Thiết kế Banner thích ứng tốt trên cả mobile, tablet và desktop.
-- [ ] Render danh mục ngành nghề dưới dạng grid tự động điều chỉnh số cột (ví dụ: xs=2, md=5).
+- [x] Thiết kế Banner thích ứng tốt trên cả mobile, tablet và desktop.
+- [x] Render danh mục ngành nghề dưới dạng grid tự động điều chỉnh số cột (ví dụ: xs=2, md=5).
 
 **Responsive ProjectCard & Grid & Test [C]**
-- [ ] Thiết kế Card dự án đồng bộ chiều cao, có shadow và bo góc hiện đại.
-- [ ] Grid dự án responsive: hiển thị 1-2 cột trên mobile, 3 cột trên tablet, 4 cột trên desktop.
-- [ ] Kiểm thử responsive trên các breakpoint chuẩn: 375px, 768px, 1280px. Lưu screenshot làm báo cáo.
+- [x] Thiết kế Card dự án đồng bộ chiều cao, có shadow và bo góc hiện đại.
+- [x] Grid dự án responsive: hiển thị 1-2 cột trên mobile, 3 cột trên tablet, 4 cột trên desktop.
+- [x] Kiểm thử responsive trên các breakpoint chuẩn: 375px, 768px, 1280px. Lưu screenshot làm báo cáo.
+
 
 ### 📦 ĐẦU RA BẮT BUỘC — Tuần 5
 
@@ -522,8 +523,9 @@ Quản lý state tập trung với Redux Toolkit. Tối ưu hiệu năng bằng 
 | 1 | Setup & Design | `db.json`, `README.md`, mockup 4 màn hình | ☑ |
 | 2 | Components & JSX | `Header`, `Banner`, `ProjectCard`, `ProjectGrid`, `CategoryList`, `Footer` | ☑ |
 | 3 | Props | `ProjectCard` (props), `SectionWrapper` (children), `ProjectGrid` (props) | ☑ |
-| 4 | Events & State | `SearchBar` (controlled), `App` (saved projects state, filter) | ☐ |
-| 5 | Bootstrap / Responsive | Tất cả components responsive 3 breakpoints | ☐ |
+| 4 | Events & State | `SearchBar` (controlled), `App` (saved projects state, filter) | ☑ |
+| 5 | Bootstrap / Responsive | Tất cả components responsive 3 breakpoints | ☑ |
+
 | 6 | Routing | `App` (BrowserRouter), `ProjectDetailPage` (useParams), `ProtectedRoute` | ☐ |
 | 7 | Hooks | `ProjectContext`, `ThemeContext`, `ProjectListPage` (useEffect+useRef) | ☐ |
 | 8 | Axios CRUD | `projectService.js`, `ProjectManagePage`, loading/error states | ☐ |

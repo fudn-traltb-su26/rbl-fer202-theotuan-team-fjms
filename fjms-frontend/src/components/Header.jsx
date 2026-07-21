@@ -1,89 +1,57 @@
 import React from 'react';
+import { Navbar, Nav, Container, Badge, Button } from 'react-bootstrap';
+import { Briefcase, BookmarkCheck, Sparkles } from 'lucide-react';
 
-function Header() {
-  // Inline styles for high-fidelity aesthetics without bootstrap/tailwind in Week 2
-  const headerStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '1rem 2rem',
-    backgroundColor: '#FFFFFF',
-    borderBottom: '1px solid #E5E7EB',
-    position: 'sticky',
-    top: 0,
-    zIndex: 100,
-    fontFamily: "'Inter', sans-serif"
-  };
-
-  const logoStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '1.25rem',
-    fontWeight: 'bold',
-    color: '#059669', // Emerald Green
-    textDecoration: 'none'
-  };
-
-  const navListStyle = {
-    display: 'flex',
-    listStyle: 'none',
-    gap: '2rem',
-    margin: 0,
-    padding: 0
-  };
-
-  const navLinkStyle = {
-    textDecoration: 'none',
-    color: '#4B5563',
-    fontWeight: '500',
-    fontSize: '0.95rem',
-    transition: 'color 0.2s ease-in-out'
-  };
-
-  const savedBadgeStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    padding: '0.5rem 1rem',
-    backgroundColor: '#D1FAE5',
-    color: '#059669',
-    borderRadius: '9999px',
-    fontSize: '0.875rem',
-    fontWeight: '600'
-  };
-
+function Header({ savedCount, onOpenSavedModal }) {
   return (
-    <header style={headerStyle}>
-      <a href="#home" style={logoStyle}>
-        <span style={{ marginRight: '0.5rem' }}>💼</span> FJMS Marketplace
-      </a>
-      
-      <nav>
-        <ul style={navListStyle}>
-          <li><a href="#home" style={navLinkStyle}>Trang chủ</a></li>
-          <li><a href="#projects" style={navLinkStyle}>Tìm việc</a></li>
-          <li><a href="#saved" style={navLinkStyle}>Dự án đã lưu</a></li>
-          <li><a href="#dashboard" style={navLinkStyle}>Dashboard</a></li>
-        </ul>
-      </nav>
+    <Navbar expand="lg" sticky="top" className="bg-white border-bottom shadow-sm py-2">
+      <Container>
+        {/* Brand Logo */}
+        <Navbar.Brand href="#home" className="d-flex align-items-center gap-2 fw-bold text-success" style={{ color: '#059669', fontSize: '1.25rem' }}>
+          <div className="p-2 rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center">
+            <Briefcase size={22} color="#059669" />
+          </div>
+          <span>FJMS Marketplace</span>
+          <Badge bg="light" text="success" className="border border-success-subtle fw-semibold small">
+            SWP Pro
+          </Badge>
+        </Navbar.Brand>
 
-      <div style={savedBadgeStyle}>
-        <span>📁 Dự án đã lưu</span>
-        <span style={{
-          backgroundColor: '#059669',
-          color: '#FFFFFF',
-          borderRadius: '50%',
-          width: '20px',
-          height: '20px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: '0.75rem'
-        }}>
-          0
-        </span>
-      </div>
-    </header>
+        {/* Mobile Toggle */}
+        <Navbar.Toggle aria-controls="fjms-navbar-nav" />
+
+        {/* Collapsible Nav */}
+        <Navbar.Collapse id="fjms-navbar-nav">
+          <Nav className="mx-auto my-2 my-lg-0 gap-lg-3">
+            <Nav.Link href="#home" className="fw-semibold text-dark active">Trang chủ</Nav.Link>
+            <Nav.Link href="#categories" className="fw-medium text-secondary">Danh mục</Nav.Link>
+            <Nav.Link href="#projects" className="fw-medium text-secondary">Dự án mới</Nav.Link>
+            <Nav.Link href="#stats" className="fw-medium text-secondary">Thống kê</Nav.Link>
+          </Nav>
+
+          {/* Right Action Trigger */}
+          <div className="d-flex align-items-center gap-2">
+            <Button 
+              variant="light"
+              onClick={onOpenSavedModal}
+              className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill border fw-semibold position-relative shadow-sm"
+              style={{ backgroundColor: '#ecfdf5', borderColor: '#a7f3d0', color: '#047857' }}
+            >
+              <BookmarkCheck size={18} color="#059669" />
+              <span className="d-none d-sm-inline">Dự án đã lưu</span>
+              <Badge 
+                bg="success" 
+                pill 
+                className="ms-1 px-2 py-1 fs-7"
+                style={{ backgroundColor: '#059669' }}
+              >
+                {savedCount}
+              </Badge>
+            </Button>
+          </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
