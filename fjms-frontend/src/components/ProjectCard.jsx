@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Card, Button, Badge, Modal } from 'react-bootstrap';
-import { Bookmark, BookmarkCheck, Clock, DollarSign, Send, CheckCircle2 } from 'lucide-react';
+import { Bookmark, BookmarkCheck, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { saveProject, unsaveProject } from '../store/projectSlice';
 
-function ProjectCard({ project, onSaveProject, isSaved, onViewDetails }) {
+function ProjectCard({ project, onViewDetails }) {
+  const savedProjects = useSelector((state) => state.project.savedProjects);
+  const dispatch = useDispatch();
+  
+  const isSaved = savedProjects.some((p) => p.id === project.id);
+
   const [showProposalModal, setShowProposalModal] = useState(false);
   const [proposalSubmitted, setProposalSubmitted] = useState(false);
 
@@ -18,165 +24,181 @@ function ProjectCard({ project, onSaveProject, isSaved, onViewDetails }) {
     }, 1800);
   };
 
+  const handleSaveToggle = (e) => {
+    e.stopPropagation();
+    if (isSaved) {
+      dispatch(unsaveProject(project.id));
+    } else {
+      dispatch(saveProject(project));
+    }
+  };
+
   return (
     <>
-      <Card className="h-100 border shadow-sm fjms-card-hover rounded-3 overflow-hidden bg-white">
-        <Card.Body className="p-4 d-flex flex-column justify-content-between">
-          <div>
-            {/* Header: Category Badge & Bookmark Button */}
-            <div className="d-flex justify-content-between align-items-start mb-3">
-              <span className="fjms-badge-category">
+      <div className="h-full bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-250 p-6 flex flex-col justify-between text-slate-800 dark:text-white">
+        <div>
+          {/* Header: Category Badge & Bookmark Button */}
+          <div className="flex justify-between items-start mb-4">
+            <div className="flex items-center gap-3">
+              <img 
+                src={`https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(project.title)}&radius=10&backgroundColor=059669`} 
+                loading="lazy" 
+                alt="Logo" 
+                className="w-10 h-10 rounded-lg border border-slate-100 dark:border-slate-700" 
+              />
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400">
                 {project.category}
               </span>
-              
-              <Button
-                variant={isSaved ? "success" : "light"}
-                size="sm"
-                className={`p-2 rounded-circle border-0 d-flex align-items-center justify-content-center transition-all ${
-                  isSaved ? 'bg-success text-white' : 'bg-light text-muted'
-                }`}
-                style={{ backgroundColor: isSaved ? '#059669' : '#f1f5f9' }}
-                onClick={() => onSaveProject(project)}
-                title={isSaved ? "Bỏ lưu dự án" : "Lưu dự án quan tâm"}
-              >
-                {isSaved ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
-              </Button>
             </div>
-
-            {/* Title & Description */}
-            <Card.Title 
-              className="fs-5 fw-bold text-dark mb-2" 
-              style={{ lineHeight: '1.35', cursor: 'pointer', transition: 'color 0.2s' }}
-              onClick={onViewDetails}
-              onMouseEnter={(e) => e.target.style.color = '#059669'}
-              onMouseLeave={(e) => e.target.style.color = 'inherit'}
+            
+            <button
+              onClick={handleSaveToggle}
+              className={`p-2 rounded-full border-0 flex items-center justify-center transition-all cursor-pointer ${
+                isSaved ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 hover:bg-slate-200'
+              }`}
+              title={isSaved ? "Bỏ lưu dự án" : "Lưu dự án quan tâm"}
             >
-              {project.title}
-            </Card.Title>
+              {isSaved ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
+            </button>
+          </div>
 
-            <Card.Text className="text-muted small mb-3 line-clamp-3" style={{ minHeight: '3.6em', lineHeight: '1.5' }}>
-              {project.description}
-            </Card.Text>
+          {/* Title & Description */}
+          <h3 
+            className="text-lg font-bold mb-2 leading-snug cursor-pointer hover:text-emerald-600 transition-colors"
+            onClick={onViewDetails}
+          >
+            {project.title}
+          </h3>
 
-            {/* Skills Badges */}
-            {project.requiredSkills && project.requiredSkills.length > 0 && (
-              <div className="d-flex flex-wrap gap-1 mb-3">
-                {project.requiredSkills.map((skill, idx) => (
-                  <Badge key={idx} bg="light" text="dark" className="border text-secondary fw-normal extra-small">
-                    {skill}
-                  </Badge>
-                ))}
+          <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-3 leading-relaxed">
+            {project.description}
+          </p>
+
+          {/* Skills Badges */}
+          {project.requiredSkills && project.requiredSkills.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {project.requiredSkills.map((skill, idx) => (
+                <span key={idx} className="text-[11px] font-medium px-2 py-0.5 rounded border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Footer Meta: Budget & Action Buttons */}
+        <div className="pt-4 border-t border-slate-100 dark:border-slate-700 mt-auto">
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <span className="text-slate-400 text-[11px] block">Ngân sách dự kiến</span>
+              <span className="text-md font-extrabold text-emerald-600 dark:text-emerald-400">
+                {formatVND(project.budget)}
+              </span>
+            </div>
+            {project.duration && (
+              <div className="text-right">
+                <span className="text-slate-400 text-[11px] flex items-center justify-end gap-1">
+                  <Clock size={12} /> Thời gian
+                </span>
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  {project.duration}
+                </span>
               </div>
             )}
           </div>
 
-          {/* Footer Meta: Budget & Action Buttons */}
-          <div className="pt-3 border-top mt-auto">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <div>
-                <span className="text-muted extra-small d-block">Ngân sách dự kiến</span>
-                <span className="fs-6 fw-extrabold text-success" style={{ color: '#059669' }}>
-                  {formatVND(project.budget)}
-                </span>
-              </div>
-              {project.duration && (
-                <div className="text-end">
-                  <span className="text-muted extra-small d-block d-flex align-items-center justify-content-end gap-1">
-                    <Clock size={12} /> Thời gian
-                  </span>
-                  <span className="small fw-semibold text-dark">
-                    {project.duration}
-                  </span>
+          <div className="grid grid-cols-2 gap-2">
+            <button 
+              className={`w-full py-2 px-3 font-semibold text-sm rounded-lg flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
+                isSaved 
+                  ? 'border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
+                  : 'border-emerald-600 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/20'
+              }`}
+              onClick={handleSaveToggle}
+            >
+              {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
+              <span>{isSaved ? "Đã lưu" : "Lưu dự án"}</span>
+            </button>
+
+            <button 
+              className="w-full py-2 px-3 font-semibold text-sm bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer border border-emerald-600 shadow-sm"
+              onClick={() => setShowProposalModal(true)}
+            >
+              <Send size={15} />
+              <span>Ứng tuyển</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Proposal Modal Preview (Simple Tailwind styled modal overlay) */}
+      {showProposalModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1050] p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-700">
+            <div className="bg-slate-50 dark:bg-slate-900 px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center text-slate-800 dark:text-white">
+              <h3 className="font-bold text-md text-slate-800 dark:text-white">
+                Gửi báo giá / Proposal — {project.title}
+              </h3>
+              <button onClick={() => setShowProposalModal(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer font-bold text-lg">&times;</button>
+            </div>
+            
+            <div className="p-6">
+              {proposalSubmitted ? (
+                <div className="text-center py-6 text-emerald-600 dark:text-emerald-400 flex flex-col items-center">
+                  <CheckCircle2 size={54} className="mb-3 animate-bounce" />
+                  <h5 className="font-bold text-lg">Nộp báo giá thành công!</h5>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs mt-1">Nhà tuyển dụng sẽ nhận được hồ sơ của bạn và phản hồi trong thời gian sớm nhất.</p>
+                </div>
+              ) : (
+                <div className="text-slate-800 dark:text-white">
+                  <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg mb-4 border border-slate-100 dark:border-slate-700 text-sm">
+                    <div className="flex justify-between mb-1.5">
+                      <span className="font-semibold text-slate-600 dark:text-slate-400">Danh mục:</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">{project.category}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-semibold text-slate-600 dark:text-slate-400">Ngân sách dự án:</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">{formatVND(project.budget)}</span>
+                    </div>
+                  </div>
+
+                  <div className="mb-4 text-left">
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Chào thầu & Báo giá mong muốn (VND):</label>
+                    <input type="number" className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm bg-white dark:bg-slate-900 outline-emerald-600" defaultValue={project.budget} />
+                  </div>
+
+                  <div className="mb-4 text-left">
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Thư giới thiệu / Đề xuất giải pháp:</label>
+                    <textarea 
+                      className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm bg-white dark:bg-slate-900 outline-emerald-600" 
+                      rows={4} 
+                      placeholder="Mô tả kinh nghiệm của bạn..."
+                      defaultValue="Chào bạn, tôi có hơn 3 năm kinh nghiệm trong lĩnh vực này và đã thực hiện thành công các dự án tương tự. Tôi rất mong muốn hợp tác cùng bạn!"
+                    />
+                  </div>
                 </div>
               )}
             </div>
-
-            <div className="d-grid gap-2 d-sm-flex">
-              <Button 
-                variant={isSaved ? "outline-secondary" : "outline-success"} 
-                size="sm"
-                className="w-100 fw-semibold d-flex align-items-center justify-content-center gap-1"
-                style={{ borderColor: isSaved ? '#cbd5e1' : '#059669', color: isSaved ? '#475569' : '#059669' }}
-                onClick={() => onSaveProject(project)}
-              >
-                {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
-                <span>{isSaved ? "Đã lưu" : "Lưu dự án"}</span>
-              </Button>
-
-              <Button 
-                variant="success" 
-                size="sm"
-                className="w-100 fw-semibold d-flex align-items-center justify-content-center gap-1"
-                style={{ backgroundColor: '#059669', borderColor: '#059669' }}
-                onClick={() => setShowProposalModal(true)}
-              >
-                <Send size={15} />
-                <span>Ứng tuyển</span>
-              </Button>
-            </div>
+            
+            {!proposalSubmitted && (
+              <div className="px-6 py-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
+                <button 
+                  onClick={() => setShowProposalModal(false)}
+                  className="px-4 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                >
+                  Hủy bỏ
+                </button>
+                <button 
+                  onClick={handleApply}
+                  className="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg cursor-pointer"
+                >
+                  Gửi ứng tuyển
+                </button>
+              </div>
+            )}
           </div>
-        </Card.Body>
-      </Card>
-
-      {/* Proposal Modal Preview */}
-      <Modal show={showProposalModal} onHide={() => setShowProposalModal(false)} centered>
-        <Modal.Header closeButton className="bg-light border-bottom">
-          <Modal.Title className="fs-5 fw-bold text-dark">
-            Gửi báo giá / Proposal — {project.title}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="p-4">
-          {proposalSubmitted ? (
-            <div className="text-center py-4 text-success">
-              <CheckCircle2 size={54} className="mb-3" />
-              <h5 className="fw-bold">Nộp báo giá thành công!</h5>
-              <p className="text-muted small">Nhà tuyển dụng sẽ nhận được hồ sơ của bạn và phản hồi trong thời gian sớm nhất.</p>
-            </div>
-          ) : (
-            <div>
-              <div className="bg-light p-3 rounded-3 mb-3 border">
-                <div className="d-flex justify-content-between mb-1">
-                  <span className="fw-semibold text-dark">Danh mục:</span>
-                  <span className="text-success fw-bold">{project.category}</span>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <span className="fw-semibold text-dark">Ngân sách dự án:</span>
-                  <span className="text-success fw-bold">{formatVND(project.budget)}</span>
-                </div>
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label fw-semibold text-dark small">Chào thầu & Báo giá mong muốn (VND):</label>
-                <input type="number" className="form-control" defaultValue={project.budget} />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label fw-semibold text-dark small">Thư giới thiệu / Đề xuất giải pháp:</label>
-                <textarea 
-                  className="form-control" 
-                  rows={4} 
-                  placeholder="Mô tả kinh nghiệm của bạn và cách bạn sẽ thực hiện dự án này..."
-                  defaultValue="Chào bạn, tôi có hơn 3 năm kinh nghiệm trong lĩnh vực này và đã thực hiện thành công các dự án tương tự. Tôi rất mong muốn hợp tác cùng bạn!"
-                />
-              </div>
-            </div>
-          )}
-        </Modal.Body>
-        {!proposalSubmitted && (
-          <Modal.Footer className="border-top bg-light">
-            <Button variant="secondary" onClick={() => setShowProposalModal(false)}>
-              Hủy bỏ
-            </Button>
-            <Button 
-              variant="success" 
-              style={{ backgroundColor: '#059669', borderColor: '#059669' }}
-              onClick={handleApply}
-            >
-              Gửi ứng tuyển
-            </Button>
-          </Modal.Footer>
-        )}
-      </Modal>
+        </div>
+      )}
     </>
   );
 }

@@ -4,12 +4,8 @@ import ProjectCard from './ProjectCard';
 import { SearchX } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-function ProjectGrid({ projects, onSaveProject, savedProjects = [] }) {
+function ProjectGrid({ projects }) {
   const navigate = useNavigate();
-
-  const isSaved = (projectId) => {
-    return savedProjects.some((p) => p.id === projectId);
-  };
 
   if (!projects || projects.length === 0) {
     return (
@@ -29,8 +25,6 @@ function ProjectGrid({ projects, onSaveProject, savedProjects = [] }) {
         <Col key={project.id} xs={12} md={6} lg={4}>
           <ProjectCard 
             project={project} 
-            onSaveProject={onSaveProject} 
-            isSaved={isSaved(project.id)}
             onViewDetails={() => navigate(`/projects/${project.id}`)}
           />
         </Col>

@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import useDebounce from '../hooks/useDebounce';
 import ProjectGrid from '../components/ProjectGrid';
 import SearchBar from '../components/SearchBar';
 import SectionWrapper from '../components/SectionWrapper';
-import { Button, Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
-import { useProject } from '../context/ProjectContext';
+import { Button, Container, Spinner, Alert } from 'react-bootstrap';
 
 export function ProjectListPage() {
-  const navigate = useNavigate();
-  const { saveProject } = useProject();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Local state for search box
@@ -132,7 +129,7 @@ export function ProjectListPage() {
           <div>
             {/* Project list rendering */}
             {projects && projects.length > 0 ? (
-              <ProjectGrid projects={projects} onSaveProject={saveProject} />
+              <ProjectGrid projects={projects} />
             ) : (
               <div className="text-center py-5 border rounded-3 bg-white">
                 <p className="text-muted fs-5 mb-3">Không tìm thấy dự án nào phù hợp với bộ lọc của bạn.</p>

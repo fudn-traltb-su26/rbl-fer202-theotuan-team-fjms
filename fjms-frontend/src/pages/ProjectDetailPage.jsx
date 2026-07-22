@@ -1,14 +1,16 @@
 import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-import { useProject } from '../context/ProjectContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { saveProject, unsaveProject } from '../store/projectSlice';
 import { Container, Card, Button, Row, Col, Spinner, Alert, Badge, Breadcrumb } from 'react-bootstrap';
-import { ArrowLeft, Briefcase, Calendar, DollarSign, Award, Star } from 'lucide-react';
+import { ArrowLeft, Briefcase, Calendar, DollarSign } from 'lucide-react';
 
 export function ProjectDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { saveProject, savedProjects, unsaveProject } = useProject();
+  const savedProjects = useSelector((state) => state.project.savedProjects);
+  const dispatch = useDispatch();
 
   // Fetch project details dynamically
   const { data: project, loading, error } = useFetch(`/projects/${id}`);
@@ -22,9 +24,9 @@ export function ProjectDetailPage() {
 
   const handleSaveToggle = () => {
     if (isSaved) {
-      unsaveProject(project.id);
+      dispatch(unsaveProject(project.id));
     } else {
-      saveProject(project);
+      dispatch(saveProject(project));
     }
   };
 

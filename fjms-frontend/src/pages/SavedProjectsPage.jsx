@@ -1,17 +1,19 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useProject } from '../context/ProjectContext';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { unsaveProject, clearSavedProjects } from '../store/projectSlice';
 import SectionWrapper from '../components/SectionWrapper';
-import { Container, Table, Button, Badge, Alert } from 'react-bootstrap';
+import { Container, Table, Button, Badge } from 'react-bootstrap';
 import { Trash2, ExternalLink, FolderHeart, ArrowRight } from 'lucide-react';
 
 export function SavedProjectsPage() {
-  const { savedProjects, unsaveProject, setSavedProjects } = useProject();
+  const savedProjects = useSelector((state) => state.project.savedProjects);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleClearAll = () => {
     if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ danh sách dự án đã lưu?')) {
-      setSavedProjects([]);
+      dispatch(clearSavedProjects());
     }
   };
 
@@ -88,7 +90,7 @@ export function SavedProjectsPage() {
                         <Button
                           variant="light"
                           size="sm"
-                          onClick={() => unsaveProject(project.id)}
+                          onClick={() => dispatch(unsaveProject(project.id))}
                           className="text-danger border-danger bg-danger bg-opacity-10"
                           title="Xóa khỏi danh sách lưu"
                         >

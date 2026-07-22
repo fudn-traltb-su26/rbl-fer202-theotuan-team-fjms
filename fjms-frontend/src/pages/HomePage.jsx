@@ -5,15 +5,12 @@ import SectionWrapper from '../components/SectionWrapper';
 import CategoryList from '../components/CategoryList';
 import ProjectCard from '../components/ProjectCard';
 import useFetch from '../hooks/useFetch';
-import { useProject } from '../context/ProjectContext';
 import { Row, Col, Card, Spinner } from 'react-bootstrap';
 import { Users, CheckCircle, Award, TrendingUp } from 'lucide-react';
 
 export function HomePage() {
   const navigate = useNavigate();
-  const { saveProject } = useProject();
   
-  // Use custom hooks to fetch categories and projects
   const { data: categories, loading: catLoading } = useFetch('/categories');
   const { data: featuredProjects, loading: projLoading } = useFetch('/projects?featured=true');
 
@@ -75,7 +72,6 @@ export function HomePage() {
               <Col key={project.id} lg={3} md={6} sm={12}>
                 <ProjectCard 
                   project={project} 
-                  onSaveProject={saveProject} 
                   onViewDetails={() => navigate(`/projects/${project.id}`)}
                 />
               </Col>
