@@ -7,5 +7,9 @@
     "dev": "npm --prefix fjms-frontend run dev",
     "build": "npm --prefix fjms-frontend run build",
     "preview": "npm --prefix fjms-frontend run preview"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "xlsx": "^0.18.5"
   }
 }
