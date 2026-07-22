@@ -2,7 +2,7 @@ import React from 'react';
 import { Search, X, Filter } from 'lucide-react';
 import { Form, InputGroup, Button, Badge } from 'react-bootstrap';
 
-function SearchBar({ keyword, onChangeKeyword, onClearKeyword, totalCount, activeCategory, onResetCategory }) {
+function SearchBar({ keyword, onChangeKeyword, onClearKeyword, totalCount, activeCategory, onResetCategory, inputRef }) {
   const isTooShort = keyword.trim().length === 1;
 
   return (
@@ -15,6 +15,7 @@ function SearchBar({ keyword, onChangeKeyword, onClearKeyword, totalCount, activ
             </InputGroup.Text>
             
             <Form.Control
+              ref={inputRef}
               type="text"
               placeholder="Tìm kiếm dự án theo tên hoặc kỹ năng (ví dụ: React, Flutter, UI/UX...)"
               value={keyword}

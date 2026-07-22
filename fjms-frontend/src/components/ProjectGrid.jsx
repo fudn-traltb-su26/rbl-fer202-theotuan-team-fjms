@@ -2,8 +2,11 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProjectCard from './ProjectCard';
 import { SearchX } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function ProjectGrid({ projects, onSaveProject, savedProjects = [] }) {
+  const navigate = useNavigate();
+
   const isSaved = (projectId) => {
     return savedProjects.some((p) => p.id === projectId);
   };
@@ -28,6 +31,7 @@ function ProjectGrid({ projects, onSaveProject, savedProjects = [] }) {
             project={project} 
             onSaveProject={onSaveProject} 
             isSaved={isSaved(project.id)}
+            onViewDetails={() => navigate(`/projects/${project.id}`)}
           />
         </Col>
       ))}

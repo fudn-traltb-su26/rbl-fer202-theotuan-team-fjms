@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, Badge, Modal } from 'react-bootstrap';
 import { Bookmark, BookmarkCheck, Clock, DollarSign, Send, CheckCircle2 } from 'lucide-react';
 
-function ProjectCard({ project, onSaveProject, isSaved }) {
+function ProjectCard({ project, onSaveProject, isSaved, onViewDetails }) {
   const [showProposalModal, setShowProposalModal] = useState(false);
   const [proposalSubmitted, setProposalSubmitted] = useState(false);
 
@@ -44,7 +44,13 @@ function ProjectCard({ project, onSaveProject, isSaved }) {
             </div>
 
             {/* Title & Description */}
-            <Card.Title className="fs-5 fw-bold text-dark mb-2" style={{ lineHeight: '1.35' }}>
+            <Card.Title 
+              className="fs-5 fw-bold text-dark mb-2" 
+              style={{ lineHeight: '1.35', cursor: 'pointer', transition: 'color 0.2s' }}
+              onClick={onViewDetails}
+              onMouseEnter={(e) => e.target.style.color = '#059669'}
+              onMouseLeave={(e) => e.target.style.color = 'inherit'}
+            >
               {project.title}
             </Card.Title>
 

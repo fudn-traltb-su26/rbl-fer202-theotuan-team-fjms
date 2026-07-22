@@ -1,17 +1,28 @@
 import React from 'react';
 import { Navbar, Nav, Container, Badge, Button } from 'react-bootstrap';
-import { Briefcase, BookmarkCheck, Sparkles } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { useProject } from '../context/ProjectContext';
+import ThemeToggle from './ThemeToggle';
+import { Briefcase, BookmarkCheck, LogIn, LogOut } from 'lucide-react';
 
-function Header({ savedCount, onOpenSavedModal }) {
+function Header() {
+  const { savedProjects, isLoggedIn, toggleAuth } = useProject();
+
+  const activeLinkStyle = ({ isActive }) => ({
+    color: isActive ? '#059669' : '#4B5563',
+    fontWeight: isActive ? '700' : '500',
+    textDecoration: 'none'
+  });
+
   return (
-    <Navbar expand="lg" sticky="top" className="bg-white border-bottom shadow-sm py-2">
+    <Navbar expand="lg" sticky="top" className="bg-white border-bottom shadow-sm py-2" style={{ backgroundColor: 'var(--header-bg) !important', borderColor: 'var(--border-color) !important' }}>
       <Container>
         {/* Brand Logo */}
-        <Navbar.Brand href="#home" className="d-flex align-items-center gap-2 fw-bold text-success" style={{ color: '#059669', fontSize: '1.25rem' }}>
+        <Navbar.Brand as={Link} to="/" className="d-flex align-items-center gap-2 fw-bold text-success" style={{ color: '#059669', fontSize: '1.25rem' }}>
           <div className="p-2 rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center">
             <Briefcase size={22} color="#059669" />
           </div>
-          <span>FJMS Marketplace</span>
+          <span style={{ color: 'var(--accent)' }}>FJMS Marketplace</span>
           <Badge bg="light" text="success" className="border border-success-subtle fw-semibold small">
             SWP Pro
           </Badge>
@@ -23,31 +34,57 @@ function Header({ savedCount, onOpenSavedModal }) {
         {/* Collapsible Nav */}
         <Navbar.Collapse id="fjms-navbar-nav">
           <Nav className="mx-auto my-2 my-lg-0 gap-lg-3">
-            <Nav.Link href="#home" className="fw-semibold text-dark active">Trang chủ</Nav.Link>
-            <Nav.Link href="#categories" className="fw-medium text-secondary">Danh mục</Nav.Link>
-            <Nav.Link href="#projects" className="fw-medium text-secondary">Dự án mới</Nav.Link>
-            <Nav.Link href="#stats" className="fw-medium text-secondary">Thống kê</Nav.Link>
+            <NavLink to="/" className="nav-link py-2" style={activeLinkStyle}>Trang chủ</NavLink>
+            <NavLink to="/projects" className="nav-link py-2" style={activeLinkStyle}>Tìm việc</NavLink>
+            <NavLink to="/saved" className="nav-link py-2" style={activeLinkStyle}>Dự án đã lưu</NavLink>
+            <NavLink to="/admin" className="nav-link py-2" style={activeLinkStyle}>Dashboard</NavLink>
           </Nav>
 
-          {/* Right Action Trigger */}
-          <div className="d-flex align-items-center gap-2">
+          {/* Right Actions */}
+          <div className="d-flex align-items-center gap-2 flex-wrap mt-2 mt-lg-0">
+            {/* Saved Count Link */}
             <Button 
+              as={Link}
+              to="/saved"
               variant="light"
-              onClick={onOpenSavedModal}
               className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill border fw-semibold position-relative shadow-sm"
-              style={{ backgroundColor: '#ecfdf5', borderColor: '#a7f3d0', color: '#047857' }}
+              style={{ backgroundColor: 'var(--accent-bg)', borderColor: 'var(--accent-border, #a7f3d0)', color: 'var(--accent, #047857)' }}
             >
-              <BookmarkCheck size={18} color="#059669" />
+              <BookmarkCheck size={18} color="var(--accent)" />
               <span className="d-none d-sm-inline">Dự án đã lưu</span>
               <Badge 
                 bg="success" 
                 pill 
                 className="ms-1 px-2 py-1 fs-7"
-                style={{ backgroundColor: '#059669' }}
+                style={{ backgroundColor: 'var(--accent)' }}
               >
-                {savedCount}
+                {savedProjects.length}
               </Badge>
             </Button>
+
+            {/* Simulated login toggle button */}
+            <Button 
+              variant={isLoggedIn ? "outline-danger" : "outline-success"}
+              onClick={toggleAuth}
+              className="d-flex align-items-center gap-1 py-2 px-3 fw-bold rounded-pill"
+              title={isLoggedIn ? 'Click để Đăng xuất' : 'Click để Đăng nhập'}
+              style={!isLoggedIn ? { color: '#059669', borderColor: '#059669' } : {}}
+            >
+              {isLoggedIn ? (
+                <>
+                  <LogOut size={16} />
+                  <span className="d-none d-md-inline">Đăng xuất (Admin)</span>
+                </>
+              ) : (
+                <>
+                  <LogIn size={16} />
+                  <span className="d-none d-md-inline">Đăng nhập (Admin)</span>
+                </>
+              )}
+            </Button>
+
+            {/* Dark Mode Switcher */}
+            <ThemeToggle />
           </div>
         </Navbar.Collapse>
       </Container>
