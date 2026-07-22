@@ -1,0 +1,132 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Web Development",
+      "icon": "code",
+      "projectCount": 3
+    },
+    {
+      "id": 2,
+      "name": "Mobile Development",
+      "icon": "smartphone",
+      "projectCount": 2
+    },
+    {
+      "id": 3,
+      "name": "UI/UX Design",
+      "icon": "figma",
+      "projectCount": 2
+    },
+    {
+      "id": 4,
+      "name": "Graphic Design",
+      "icon": "image",
+      "projectCount": 1
+    },
+    {
+      "id": 5,
+      "name": "Content Writing",
+      "icon": "edit",
+      "projectCount": 1
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Web App",
+      "description": "Build a responsive React e-commerce frontend with TailwindCSS.",
+      "budget": 15000000,
+      "category": "Web Development",
+      "categoryId": 1,
+      "status": "OPEN",
+      "duration": "30 days",
+      "requiredSkills": ["React", "TailwindCSS"],
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "iOS/Android Fitness App",
+      "description": "Design and develop a cross-platform Flutter mobile application.",
+      "budget": 25000000,
+      "category": "Mobile Development",
+      "categoryId": 2,
+      "status": "OPEN",
+      "duration": "60 days",
+      "requiredSkills": ["Flutter", "Dart"],
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "SaaS Dashboard UI/UX Design",
+      "description": "Create a modern dashboard UI/UX mockups using Figma.",
+      "budget": 8000000,
+      "category": "UI/UX Design",
+      "categoryId": 3,
+      "status": "OPEN",
+      "duration": "14 days",
+      "requiredSkills": ["Figma", "UI/UX"],
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Company Branding Logo Design",
+      "description": "Design a clean, professional logo and brand identity.",
+      "budget": 3000000,
+      "category": "Graphic Design",
+      "categoryId": 4,
+      "status": "OPEN",
+      "duration": "7 days",
+      "requiredSkills": ["Illustrator", "Photoshop"],
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Technical Blog Writing",
+      "description": "Write 5 SEO-optimized articles about modern web technologies.",
+      "budget": 2000000,
+      "category": "Content Writing",
+      "categoryId": 5,
+      "status": "OPEN",
+      "duration": "10 days",
+      "requiredSkills": ["Technical Writing", "SEO"],
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "Portfolio Website with React",
+      "description": "Develop a beautiful portfolio website using React 19.",
+      "budget": 5000000,
+      "category": "Web Development",
+      "categoryId": 1,
+      "status": "OPEN",
+      "duration": "10 days",
+      "requiredSkills": ["React", "CSS"],
+      "featured": false
+    },
+    {
+      "id": 7,
+      "title": "Food Delivery App",
+      "description": "Develop a React Native app for a local food delivery service.",
+      "budget": 20000000,
+      "category": "Mobile Development",
+      "categoryId": 2,
+      "status": "OPEN",
+      "duration": "45 days",
+      "requiredSkills": ["React Native"],
+      "featured": true
+    },
+    {
+      "id": 8,
+      "title": "Real Estate Website UI Design",
+      "description": "Wireframe and high-fidelity prototype for a real estate web app.",
+      "budget": 7000000,
+      "category": "UI/UX Design",
+      "categoryId": 3,
+      "status": "OPEN",
+      "duration": "15 days",
+      "requiredSkills": ["Figma"],
+      "featured": false
+    }
+  ]
+}
